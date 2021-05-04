@@ -1,0 +1,82 @@
+﻿@model IEnumerable<WhatsInMyBag.Models.FAQ>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+@if (User.Identity.Name == "admin1@admin1.com")
+{
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+}
+
+<h2>FAQ</h2>
+<div class="bs-component">
+    <ul class="nav nav-tabs">
+        @foreach (var x in ViewBag.category)
+        {
+        <li class="nav-item">
+            @{ var image = x + ".png";}
+            
+            <a class="nav-link active" data-toggle="tab" href="#@x"><img src="~/Content/Images/@image" style="width:40px; height:40px;" /> @x</a>
+        </li>
+        }
+
+
+    </ul>
+
+    <div id="myTabContent" class="tab-content">
+
+        <div class="tab-pane fade" id="Cart">
+            <h2>Cart FAQs</h2>
+            <ol>
+                @foreach (var cart in ViewBag.cart)
+                {
+                    <li><p style="font-size:20px;"><strong>@cart.Question</strong>@cart.Answer</p></li>
+                }
+            </ol>
+            <div class="btn btn-primary" style="background-color:white;">
+                @Html.ActionLink("View My Cart", "MyCart", "Transaction")
+            </div>
+        </div>
+
+        <div class="tab-pane fade" id="Payment">
+            <h2>Payment FAQs</h2>
+            <ol>
+                @foreach (var pay in ViewBag.payment)
+                {
+                    <li><p style="font-size:20px;"><strong>@pay.Question</strong>@pay.Answer</p></li>
+                }
+            </ol>
+        </div>
+
+        <div class="tab-pane fade" id="Shipping">
+            <h2>Shipping FAQs</h2>
+            <ol>
+                @foreach (var ship in ViewBag.shipping)
+                {
+                    <li><p style="font-size:20px;"><strong>@ship.Question</strong>@ship.Answer</p></li>
+                }
+            </ol>
+        </div>
+
+
+
+
+
+    </div>
+
+</div>
+<br />
+
+<div class="btn btn-primary" style="background-color:white;">
+    @Html.ActionLink("For more questions please contact us", "Index", "Home")
+</div>
+<br />
+<br />
+<div class="btn btn-primary" style="background-color:white;">
+    @Html.ActionLink("Home Page", "Index", "Home")
+</div>
+

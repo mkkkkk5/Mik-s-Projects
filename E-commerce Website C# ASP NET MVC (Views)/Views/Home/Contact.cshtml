@@ -1,0 +1,43 @@
+﻿@{
+    ViewBag.Title = "Contact";
+}
+<h2>Contact Page</h2>
+
+<div >
+    <p>
+        <strong>Find us here:</strong> 24449 Arab League St, Doha <br />
+        @Html.ActionLink("For more information on where to find us, click here.", "About", "Home")
+    </p>
+
+    <p>
+        <strong>Contact us:</strong> 4466-7788 <br />
+        <strong>Help desk:</strong> 4466-8899
+    </p>
+    <br />
+    <div class="well-lg" style="float:left; margin-left:200px; width:300px;">
+        <p>
+            <img src="~/Content/Images/CEO.PNG"  style="width:100%;height:400px"  />
+            <br />
+            <strong>Ms. Emma Stone</strong> <br />
+            <strong>Founder and CEO of WhatsInMyBag</strong><br />
+            <strong>Contact number:</strong> 4466-1111<br />
+            <strong>Email:</strong> emma_stone@geems.com<br />
+        </p>
+    </div>
+    <div class="well-lg" style="float:left; margin-left:200px;margin-right:100px; width:300px;">
+        <p>
+
+            <img src="~/Content/Images/author.png" style="width:100%;height:400px" />
+            <br />
+            <strong>Ms. Mikhaelle Pablico</strong> <br />
+            <strong>Author of the Website</strong><br />
+            <strong>Contact number:</strong> 4466-1112<br />
+            <strong>Email:</strong> 60094909@cna-qatar.edu.qa<br />
+        </p>
+    </div>
+
+</div>
+<br />
+<div class="btn btn-primary" style="background-color:white;">
+    @Html.ActionLink("Homepage", "Index", "Home")
+</div>

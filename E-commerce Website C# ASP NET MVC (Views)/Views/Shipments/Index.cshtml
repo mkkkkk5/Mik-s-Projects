@@ -1,0 +1,48 @@
+﻿@model IEnumerable<WhatsInMyBag.Models.Shipment>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Shipped out Carts:</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Cart.CustomerName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ShipmentFee)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TotalFee)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cart.CustomerName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ShipmentFee)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TotalFee)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+            </td>
+        </tr>
+    }
+
+</table>
+
+<div class="btn btn-primary" style="background-color:white;">
+    @Html.ActionLink("Go back to Admin Carts", "Index", "AdminCarts")
+</div>

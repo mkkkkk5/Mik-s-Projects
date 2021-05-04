@@ -1,0 +1,46 @@
+﻿@model IEnumerable<WhatsInMyBag.Models.DiscountedProduct>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Discounted Products</h2>
+
+<div class="btn btn-primary" style="background-color:white;">
+    @Html.ActionLink("Click to see Products", "Index", "Products")
+</div>
+
+<div class="panle panel-primary">
+    @foreach (var item in Model)
+    {
+        <div class="well-lg" style="width:30%; height:500px; float:left; margin: 5px;">
+            @{var image = item.Product.Name + ".jpg";}
+            <img src="~/Content/Images/@image" style="width:100%;height:300px;" />
+            <h4>@item.Product.Name</h4>
+            <p>@item.Product.Description</p>
+            <h4><strike>@item.Product.Price QR</strike></h4>
+            <h4 style="color:red;">@item.Discounted_Price QR</h4>
+            @if (User.Identity.Name == "admin1@admin1.com")
+            {
+                <h4>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id }) |
+                </h4>
+            }
+            <h4>
+                @Html.ActionLink("Details", "Details", "Products", new { id = item.Product.Id }, null) |
+                @Html.ActionLink("Buy", "Buy", "Transaction", new { id = item.Product.Id }, null)
+            </h4>
+        </div>
+    }
+
+
+</div>
+
+<br />
+<br />
+
+<div class="btn btn-primary" style="background-color:white;">
+
+    @Html.ActionLink("Homepage", "Index", "Home")
+</div>

@@ -1,0 +1,59 @@
+﻿<!--Mikhaelle Pablico 60094909-->
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h1>WhatsInMyBag- Stationery Shop</h1>
+</div>
+
+<div class="panel panel-primary">
+    <img src="~/Content/Images/stationeryHomePage.jpg" style="width:100%;height:400px;" />
+</div>
+
+<div class="panel panel-primary">
+    <div class="panel-body">
+        <h2 style="text-align:center;">Introduction </h2>
+        <p>Welcome to WhatsInMyBag Stationery Shop.</p>
+        <p>
+            Here we offer varieties of stationery supplies you would need for your office, school or home desk-space.
+            @Html.ActionLink("Click here for more information", "About", "Home")
+        </p>
+        <p>
+            We hope you enjoy your shopping here at WhatsInMyBag!
+            @Html.ActionLink("For contact information click here", "Contact", "Home")
+        </p>
+        <p>
+            @Html.ActionLink("For FAQs click here", "Index", "FAQs")
+        </p>
+        <h2>@Html.ActionLink("View our products", "Index", "Products")</h2>
+    </div>
+</div>
+
+<h1>You can use these Promo code in checkout for discount</h1>
+<table class="table">
+    <tr>
+        <th>Code</th>
+        <th>Discount</th>
+    </tr>
+    @foreach(var c in ViewBag.codeList)
+    {
+        <tr>
+            <td>@c.Code</td>
+            <td>@c.Percentage %</td>
+        </tr>
+    }
+
+</table>
+
+
+
+<div class="btn btn-primary" style="background-color:white;">
+    @Html.ActionLink("View My Cart", "MyCart", "Transaction")
+</div>
+<br /><br />
+<div class="btn btn-primary" style="background-color:white;">
+    @Html.ActionLink("Admin Cart", "Index", "AdminCarts")
+</div>
+
+

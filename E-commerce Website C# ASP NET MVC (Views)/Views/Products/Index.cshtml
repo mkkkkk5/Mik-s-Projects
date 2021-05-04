@@ -1,0 +1,66 @@
+﻿@model IEnumerable<WhatsInMyBag.Models.Product>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Products</h2>
+
+<div class="btn btn-primary" style="background-color:white;">
+    @Html.ActionLink("Click to see Discounted Products", "Index", "DiscountedProducts")
+</div>
+
+<p class="alert-danger">
+    @TempData["errorDelete"]
+</p>
+
+
+@if (User.Identity.Name == "admin1@admin1.com")
+{
+    <h4>
+        @Html.ActionLink("Create New", "Create")
+    </h4>
+}
+
+@using (Html.BeginForm())
+{
+    <h4>
+        Search: @Html.TextBox("search")
+        Product Item: @Html.DropDownList("productItem", "All")
+        <input type="submit" value="Filter product item" class="btn btn-primary" />
+    </h4>
+    <p>
+        Sort Low to High: @Html.RadioButton("sort", "lowtohigh")
+        Sort High to Low: @Html.RadioButton("sort", "hightolow")
+        <input type="submit" value="Sort" class="btn btn-primary" />
+    </p>
+}
+
+<div class="panle panel-primary">
+    @foreach (var item in Model)
+    {
+        <div class="well-lg" style="width:30%; height:500px; float:left; margin: 5px;">
+            @{var image = item.Name + ".jpg";}
+            <img src="~/Content/Images/@image" style="width:100%;height:300px;" />
+            <h4>@Html.DisplayFor(modelItem => item.Name)</h4>
+            <p>@Html.DisplayFor(modelItem => item.Description)</p>
+            <h4>@Html.DisplayFor(modelItem => item.Price)QR</h4>
+            @if (User.Identity.Name == "admin1@admin1.com")
+            {
+                <h4>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id }) |
+                </h4>
+            }
+            <h4>
+                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                @Html.ActionLink("Buy", "Buy", "Transaction", new { id = item.Id }, null)
+            </h4>
+        </div>
+    }
+</div>
+
+
+<div class="btn btn-primary" style="background-color:white;">
+    @Html.ActionLink("Homepage", "Index", "Home")
+</div>

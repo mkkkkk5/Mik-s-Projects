@@ -1,0 +1,97 @@
+﻿@model IEnumerable<WhatsInMyBag.Models.Cart>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Carts</h2>
+
+<p class="alert-danger">
+    @TempData["errorStatus"]
+</p>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Status)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Customer.Name)
+        </th>
+        <th>
+            Amount
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Customer.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Amount) QR
+
+            </td>
+            <td>
+                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                
+
+            </td>
+        </tr>
+    }
+
+</table>
+
+<h2>Customers Registered</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Customer.UserName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Customer.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Customer.Address)
+        </th>
+
+    </tr>
+
+
+
+    @foreach (var item in ViewBag.customers)
+    {
+        <tr>
+            <td>
+                @item.UserName
+            </td>
+            <td>
+                @item.Name
+            </td>
+            <td>
+                @item.Address
+            </td>
+
+        </tr>
+    }
+</table>
+
+
+<div class="btn btn-primary" style="background-color:white;">
+    @Html.ActionLink("View Products", "Index", "Products")
+</div>
+<div class="btn btn-primary" style="background-color:white;">
+    @Html.ActionLink("View Customer Details", "Index", "Customers")
+</div>
+<div class="btn btn-primary" style="background-color:white;">
+    @Html.ActionLink("View Shipments", "Index", "Shipments")
+   
+</div>
