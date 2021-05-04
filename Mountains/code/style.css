@@ -1,0 +1,17 @@
+body {
+    background-color: #1C2353;
+}
+
+#container {
+    max-width: 1000px;
+    min-width: 600px;
+	height:1500px;
+	background: rgb(169, 199, 222);
+	padding: 10px;
+	margin: auto;
+}
+
+h1, h2, p{
+	text-align: center;
+	color: #1C2353;
+}
